@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="options">
+         <div class="row-time">
+            <label>Entry:</label> <input id="entry_hours" next-focus="entry_minutes" class="input-item" type="text" placeholder="00" min="0" max="23" maxlength="2"><span class="colon">:</span><input id="entry_minutes" next-focus="exit_hours" class="input-item" type="text" placeholder="00" min="0" max="59" maxlength="2">
+         </div>
+         <div class="row-time">
+            <label> Exit:</label> <input id="exit_hours" next-focus="exit_minutes" class="input-item" type="text" placeholder="00" min="0" max="23" maxlength="2"><span class="colon">:</span><input id="exit_minutes" class="input-item" type="text" placeholder="00" min="0" max="59" maxlength="2">
+         </div>
+         <button id="auto_fill_btn">Auto fill</button>
+      </div>
+      <script src="popup.js"></script>
+   </body>
+</html>
