@@ -63,19 +63,19 @@
 
 .row-item.fullwidth label .info-icon .info-content {
 	display: none;
-    position: absolute;
-    bottom: 20px;
-    left: -34px;
-    border: solid 1px;
-    width: 216px;
-    padding: 12px;
-    color: #000;
-    background: #fffef2;
-    font-weight: normal;
-    line-height: 160%;
-    font-size: 12px;
-    border-radius: 6px;
-    text-align: left;
+	position: absolute;
+	bottom: 20px;
+	left: -55px;
+	border: solid 1px;
+	width: 216px;
+	padding: 12px;
+	color: #000;
+	background: #fffef2;
+	font-weight: normal;
+	line-height: 160%;
+	font-size: 12px;
+	border-radius: 6px;
+	text-align: left;
 }
 
 .row-item.fullwidth label .info-icon .info-content b {
@@ -102,6 +102,10 @@
 	background: none;
 	padding: 5px 15px;
 	text-align: left;
+}
+
+.row-item.checkbox label {
+	font-weight: normal;
 }
 
 .row-item.checkbox input {

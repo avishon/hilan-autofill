@@ -102,7 +102,6 @@ function init() {
   var projectCurrentIndex;
 
   chrome.storage.sync.get("popupFormValue", function ({ popupFormValue }) {
-    console.log(popupFormValue);
     formValue = popupFormValue;
     clickErrorButton();
     setTimeout(() => fillTime(), 2000);
@@ -139,8 +138,11 @@ function init() {
     errorDaysButton.click();
   }
 
-  // (project -step 1) Fill project first row
+  // (project -step 1) Fill project (first row)
   function fillProjectName() {
+    if (!formValue.projectName) {
+      return;
+    }
     projectCurrentIndex = 0;
     projectSearchInputRows = document.querySelectorAll(
       'input[name*="ProjectForView"][type="text"]'
@@ -148,10 +150,9 @@ function init() {
     openProjectDropDown(projectSearchInputRows[projectCurrentIndex]);
   }
 
-  // (project -step 2) Open project drop down, then click on option item
+  // (project -step 2) Open project drop down, then click on the selected option item
   function openProjectDropDown(searchInputEl) {
     if (!searchInputEl) {
-      console.log("item is null");
       return;
     }
     searchInputEl.value = "";
@@ -161,7 +162,6 @@ function init() {
       evt.initEvent("keydown", true, true);
       searchInputEl.dispatchEvent(evt);
 
-      // click - selected item
       setTimeout(() => {
         clickProjectDropDownOption(searchInputEl);
       }, 1500);
@@ -174,7 +174,6 @@ function init() {
       'li[title*="' + formValue.projectName + '"]'
     );
     searchInputEl.value = optionSelector.attributes.title.value;
-    // blur
     var evt = document.createEvent("Events");
     evt.initEvent("blur", true, true);
     searchInputEl.dispatchEvent(evt);
@@ -183,7 +182,7 @@ function init() {
     }, 200);
   }
 
-  // (project -step 4) continue with the next row
+  // (project -step 4) continue to the next row
   function fillProjectNextRow() {
     projectCurrentIndex++;
     openProjectDropDown(projectSearchInputRows[projectCurrentIndex]);
