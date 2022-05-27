@@ -1,9 +1,9 @@
 .options {
-	width: 170px;
+	width: 250px;
 	font-family: Arial;
 }
 
-.row-time {
+.row-item {
 	display: flex;
 	align-items: center;
 	padding: 15px;
@@ -11,24 +11,106 @@
 	margin-bottom: 10px;
 }
 
-.row-time label {
+.row-item label {
 	margin-right: 11px;
 	min-width: 35px;
 	font-size: 14px;
 	font-weight: bold;
 }
 
-.row-time input {
+.row-item input {
 	border: solid 1px #9db5c1;
-	width: 35px;
-	height: 30px;
+	height: 35px;
+	width: 55px;
 	font-size: 15px;
 	letter-spacing: 1px;
 	text-align: center;
 	border-radius: 5px;
+	box-sizing: border-box;
 }
 
-.row-time .colon {
+.row-item.fullwidth {
+	flex-direction: column;
+}
+
+.row-item.fullwidth label {
+	position: relative;
+	margin-right: 0;
+	margin-bottom: 11px;
+	margin-right: -18px;
+}
+
+.row-item.fullwidth label .info-icon {
+	position: absolute;
+	top: 0px;
+	left: -18px;
+	width: 15px;
+	height: 15px;
+	background: #4b86b5;
+	border-radius: 50%;
+	font-size: 11px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-family: sans-serif;
+	line-height: 15px;
+	cursor: pointer;
+}
+
+.row-item.fullwidth label .info-icon::before {
+	content: '?';
+}
+
+.row-item.fullwidth label .info-icon .info-content {
+	display: none;
+    position: absolute;
+    bottom: 20px;
+    left: -34px;
+    border: solid 1px;
+    width: 216px;
+    padding: 12px;
+    color: #000;
+    background: #fffef2;
+    font-weight: normal;
+    line-height: 160%;
+    font-size: 12px;
+    border-radius: 6px;
+    text-align: left;
+}
+
+.row-item.fullwidth label .info-icon .info-content b {
+	color: #2196f3;
+}
+
+.row-item.fullwidth label .info-icon:hover .info-content {
+	display: block;
+}
+
+.row-item.fullwidth label i {
+	font-weight: normal;
+	font-style: normal;
+	color: #777;
+}
+
+.row-item.fullwidth input {
+	width: 100%;
+	text-align: left;
+	padding: 0 15px;
+}
+
+.row-item.checkbox {
+	background: none;
+	padding: 5px 15px;
+	text-align: left;
+}
+
+.row-item.checkbox input {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+}
+
+.row-item .colon {
 	margin: 0 5px;
 	font-weight: 600;
 	color: #999;
