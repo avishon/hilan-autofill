@@ -1,18 +1,79 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <link rel="stylesheet" href="style.css">
-   </head>
-   <body>
-      <div class="options">
-         <div class="row-time">
-            <label>Entry:</label> <input id="entry_hours" next-focus="entry_minutes" class="input-item" type="text" placeholder="00" min="0" max="23" maxlength="2"><span class="colon">:</span><input id="entry_minutes" next-focus="exit_hours" class="input-item" type="text" placeholder="00" min="0" max="59" maxlength="2">
-         </div>
-         <div class="row-time">
-            <label> Exit:</label> <input id="exit_hours" next-focus="exit_minutes" class="input-item" type="text" placeholder="00" min="0" max="23" maxlength="2"><span class="colon">:</span><input id="exit_minutes" class="input-item" type="text" placeholder="00" min="0" max="59" maxlength="2">
-         </div>
-         <button id="auto_fill_btn">Auto fill</button>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="options">
+      <div class="row-item">
+        <label>Entry:</label>
+        <input
+          id="entry_hours"
+          next-focus="entry_minutes"
+          class="input-item time"
+          type="text"
+          placeholder="00"
+          min="0"
+          max="23"
+          maxlength="2"
+        /><span class="colon">:</span
+        ><input
+          id="entry_minutes"
+          next-focus="exit_hours"
+          class="input-item time"
+          type="text"
+          placeholder="00"
+          min="0"
+          max="59"
+          maxlength="2"
+        />
       </div>
-      <script src="popup.js"></script>
-   </body>
+      <div class="row-item">
+        <label> Exit:</label>
+        <input
+          id="exit_hours"
+          next-focus="exit_minutes"
+          class="input-item time"
+          type="text"
+          placeholder="00"
+          min="0"
+          max="23"
+          maxlength="2"
+        /><span class="colon">:</span
+        ><input
+          id="exit_minutes"
+          class="input-item time"
+          type="text"
+          placeholder="00"
+          min="0"
+          max="59"
+          maxlength="2"
+        />
+      </div>
+      <div class="row-item fullwidth">
+        <label
+          ><span class="info-icon">
+            <span class="info-content">
+              You can enter part of the project name. As an example, if your
+              project name is <b>My Project 14567</b>,<br />
+              you can enter <b>14567</b>.
+            </span>
+          </span>
+          Project <i>(optional)</i>:</label
+        >
+        <input
+          id="project_name"
+          class="input-item"
+          type="text"
+          placeholder="Enter name/number"
+        />
+      </div>
+      <div class="row-item checkbox">
+        <input type="checkbox" id="remember" />
+        <label for="remember"> Remember for next time</label>
+      </div>
+      <button id="auto_fill_btn">Auto fill</button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
 </html>
