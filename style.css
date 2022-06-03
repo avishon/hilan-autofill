@@ -92,10 +92,27 @@
 	color: #777;
 }
 
-.row-item.fullwidth input {
+.row-item.fullwidth input[type="text"] {
 	width: 100%;
 	text-align: left;
 	padding: 0 15px;
+}
+
+.row-item.radio-row {
+	display: flex;
+	align-items: center;
+}
+
+.row-item.radio-row input[type="radio"] {
+	width: 13px;
+	height: 13px;
+	margin: 0 5px 0 0;
+}
+
+
+.row-item.radio-row label {
+	font-weight: normal;
+	font-size: 13px;
 }
 
 .row-item.checkbox {

@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var inputsTimeAll = document.querySelectorAll(".input-item.time");
   var autoFillButton = document.querySelector("#auto_fill_btn");
   var inputRemember = document.querySelector("#remember");
+  var inputRadioErrorDays = document.querySelector("#errors_days");
+  var inputRadioSelectedDays = document.querySelector("#selected_days");
 
   function fillPopupFromCacheData() {
     chrome.storage.sync.get("popupFormValue", function ({ popupFormValue }) {
@@ -54,6 +56,9 @@ document.addEventListener("DOMContentLoaded", function () {
         inputHoursExit.value = popupFormValue.exitHours;
         inputMinutesExit.value = popupFormValue.exitMinutes;
         inputProjectName.value = popupFormValue.projectName;
+        inputRadioErrorDays.checked = !popupFormValue.radioSelectedDaysChecked;
+        inputRadioSelectedDays.checked =
+          popupFormValue.radioSelectedDaysChecked;
         inputRemember.checked = popupFormValue.remember;
       }
     });
@@ -84,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
         exitHours: inputHoursExit.value || "00",
         exitMinutes: inputMinutesExit.value || "00",
         projectName: inputProjectName.value,
+        radioErrorDaysChecked: !inputRadioSelectedDays.checked,
+        radioSelectedDaysChecked: inputRadioSelectedDays.checked,
         remember: inputRemember.checked,
       },
     });
@@ -103,7 +110,12 @@ function init() {
 
   chrome.storage.sync.get("popupFormValue", function ({ popupFormValue }) {
     formValue = popupFormValue;
-    clickErrorButton();
+    if (formValue.radioSelectedDaysChecked) {
+      clickSelectedDaysButton();
+    } else {
+      clickErrorsDaysButton();
+    }
+
     setTimeout(() => fillTime(), 2000);
     setTimeout(() => fillProjectName(), 2000);
   });
@@ -131,11 +143,18 @@ function init() {
     });
   }
 
-  function clickErrorButton() {
+  function clickErrorsDaysButton() {
     var errorDaysButton = document.querySelector(
       'input[id*="RefreshErrorsDays"]'
     );
     errorDaysButton.click();
+  }
+
+  function clickSelectedDaysButton() {
+    var selectedDaysButton = document.querySelector(
+      'input[id*="RefreshSelectedDays"]'
+    );
+    selectedDaysButton.click();
   }
 
   // (project -step 1) Fill project (first row)
